@@ -3,7 +3,7 @@ from ultralytics import YOLO
 
 print("===  Real-Time AI Object Detection ===")
 
-detector_model = YOLO("yolov8n.pt")
+detector_model = YOLO("yolov8s.pt")
 
 video_cap = cv2.VideoCapture(0)
 
@@ -14,7 +14,7 @@ while True:
         print("Camera error")
         break
 
-    detection_results = detector_model(vedio_frame)
+    detection_results = detector_model(vedio_frame, conf=0.5)
 
     output_frame = detection_results[0].plot()
     cv2.putText(output_frame, "Ayesha AI Vision", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
